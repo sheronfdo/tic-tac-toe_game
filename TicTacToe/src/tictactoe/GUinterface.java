@@ -163,6 +163,41 @@ public class GUinterface extends JFrame implements ActionListener{
             leftgamer.setBorder(pborder);
         }
     }
+    public void check_win(){
+        if((result[0][0] == result[1][0]) && (result[2][0] == result[1][0]) && (result[0][0] != null)){
+            but1.setBackground(Color.BLUE);
+            but4.setBackground(Color.BLUE);
+            but7.setBackground(Color.BLUE);
+        }else if((result[0][1] == result[1][1]) && (result[2][1] == result[1][1]) && (result[0][1] != null)){
+            but2.setBackground(Color.BLUE);
+            but5.setBackground(Color.BLUE);
+            but8.setBackground(Color.BLUE);
+        }else if((result[0][2] == result[1][2]) && (result[2][2] == result[1][2]) && (result[0][2] != null)){
+            but3.setBackground(Color.BLUE);
+            but6.setBackground(Color.BLUE);
+            but9.setBackground(Color.BLUE);
+        }else if((result[0][0] == result[0][1]) && (result[0][2] == result[0][1]) && (result[0][0] != null)){
+            but1.setBackground(Color.BLUE);
+            but2.setBackground(Color.BLUE);
+            but3.setBackground(Color.BLUE);
+        }else if((result[1][0] == result[1][1]) && (result[1][2] == result[1][1]) && (result[1][0] != null)){
+            but4.setBackground(Color.BLUE);
+            but5.setBackground(Color.BLUE);
+            but6.setBackground(Color.BLUE);
+        }else if((result[2][0] == result[2][1]) && (result[2][2] == result[2][1]) && (result[2][0] != null)){
+            but7.setBackground(Color.BLUE);
+            but8.setBackground(Color.BLUE);
+            but9.setBackground(Color.BLUE);
+        }else if((result[0][0] == result[1][1]) && (result[2][2] == result[1][1]) && (result[2][2] != null)){
+            but1.setBackground(Color.BLUE);
+            but5.setBackground(Color.BLUE);
+            but9.setBackground(Color.BLUE);
+        }else if((result[0][2] == result[1][1]) && (result[2][0] == result[1][1]) && (result[1][1] != null)){
+            but3.setBackground(Color.BLUE);
+            but5.setBackground(Color.BLUE);
+            but7.setBackground(Color.BLUE);
+        }
+    }
     @Override
     public void actionPerformed(ActionEvent e) {
         player();
@@ -212,5 +247,6 @@ public class GUinterface extends JFrame implements ActionListener{
             result[2][2] = cplayer;
         }
         next_player();
+        check_win();
     }
 }
