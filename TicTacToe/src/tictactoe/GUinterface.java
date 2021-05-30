@@ -37,7 +37,7 @@ public class GUinterface extends JFrame implements ActionListener{
     Border border = BorderFactory.createLineBorder(Color.black, 2);
     Border pborder = BorderFactory.createTitledBorder(border, "player");
     
-    String[][][] result = new String[3][3][3]; 
+    String[][] result = new String[3][3]; 
     
     JButton but1 = new JButton();
     JButton but2 = new JButton();
@@ -169,40 +169,48 @@ public class GUinterface extends JFrame implements ActionListener{
         if(e.getSource() == but1){
             but1.setIcon(cpicon);
             but1.setEnabled(false);
+            result[0][0] = cplayer;
         }
         if(e.getSource() == but2){
             but2.setIcon(cpicon);
             but2.setEnabled(false);
+            result[0][1] = cplayer;
         }
         if(e.getSource() == but3){
             but3.setIcon(cpicon);
             but3.setEnabled(false);
+            result[0][2] = cplayer;
         }
         if(e.getSource() == but4){
             but4.setIcon(cpicon);
             but4.setEnabled(false);
+            result[1][0] = cplayer;
         }
         if(e.getSource() == but5){
             but5.setIcon(cpicon);
             but5.setEnabled(false);
+            result[1][1] = cplayer;
         }
         if(e.getSource() == but6){
             but6.setIcon(cpicon);
             but6.setEnabled(false);
+            result[1][2] = cplayer;
         }
         if(e.getSource() == but7){
             but7.setIcon(cpicon);
             but7.setEnabled(false);
+            result[2][0] = cplayer;
         }
         if(e.getSource() == but8){
             but8.setIcon(cpicon);
             but8.setEnabled(false);
+            result[2][1] = cplayer;
         }
         if(e.getSource() == but9){
             but9.setIcon(cpicon);
             but9.setEnabled(false);
+            result[2][2] = cplayer;
         }
-        
         next_player();
     }
 }
