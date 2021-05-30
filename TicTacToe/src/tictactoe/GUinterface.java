@@ -6,7 +6,6 @@
 package tictactoe;
 
 import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -152,7 +151,8 @@ public class GUinterface extends JFrame implements ActionListener{
         if(cplayer == "right"){
             cpicon = righticon;
         }
-        
+    }
+    public void next_player(){
         if(cplayer == "left"){
             cplayer = "right";
             leftgamer.setBorder(border);
@@ -202,6 +202,7 @@ public class GUinterface extends JFrame implements ActionListener{
             but9.setIcon(cpicon);
             but9.setEnabled(false);
         }
-             
+        
+        next_player();
     }
 }
