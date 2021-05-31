@@ -68,12 +68,14 @@ public class get_player extends JFrame implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent e) {
         if(e.getSource() == button){
-            if((leftplayer.getText() == "") || (rightplayer.getText() == "")){
-                if(leftplayer.getText() == ""){
-                    JOptionPane.showConfirmDialog(this, "Please give us a name for first player", "Name doesn't insert", WIDTH);
+            if((leftplayer.getText().toString().length() == 0) || (rightplayer.getText().toString().length() == 0)){
+                if(leftplayer.getText().toString().length() == 0){
+                    JOptionPane.showMessageDialog(null, "Please give us a name for first player", "Name doesn't insert", JOptionPane.PLAIN_MESSAGE);
+                    //leftplayer.setFocusable(true);
                 }
-                if(rightplayer.getText() == ""){
-                    JOptionPane.showConfirmDialog(this, "Please give us a name for second player", "Name doesn't insert", WIDTH);
+                if(rightplayer.getText().toString().length() == 0){
+                    JOptionPane.showMessageDialog(null, "Please give us a name for second player", "Name doesn't insert", JOptionPane.PLAIN_MESSAGE);
+                    //rightplayer.setFocusable(true);
                 }
             } else {
                 this.setVisible(false);
