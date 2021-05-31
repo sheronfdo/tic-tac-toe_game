@@ -15,6 +15,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -163,7 +164,7 @@ public class GUinterface extends JFrame implements ActionListener{
             leftgamer.setBorder(pborder);
         }
     }
-    public void butdisable(){
+    public void butdisable(String winner){
         but1.setEnabled(false);
         but2.setEnabled(false);
         but3.setEnabled(false);
@@ -173,48 +174,55 @@ public class GUinterface extends JFrame implements ActionListener{
         but7.setEnabled(false);
         but8.setEnabled(false);
         but9.setEnabled(false);
+        
+        if(winner == "left"){
+            JOptionPane.showMessageDialog(null, "winner is " + leftgamer.getText(), "Winner", JOptionPane.PLAIN_MESSAGE);
+        }
+        if(winner == "right"){
+            JOptionPane.showMessageDialog(null, "winner is " + rightgamer.getText(), "Winner", JOptionPane.PLAIN_MESSAGE);
+        }
     }
     public void check_win(){
         if((result[0][0] == result[1][0]) && (result[2][0] == result[1][0]) && (result[0][0] != null)){
             but1.setBackground(Color.BLUE);
             but4.setBackground(Color.BLUE);
             but7.setBackground(Color.BLUE);
-            butdisable();
+            butdisable(result[0][0]);
         }else if((result[0][1] == result[1][1]) && (result[2][1] == result[1][1]) && (result[0][1] != null)){
             but2.setBackground(Color.BLUE);
             but5.setBackground(Color.BLUE);
             but8.setBackground(Color.BLUE);
-            butdisable();
+            butdisable(result[0][1]);
         }else if((result[0][2] == result[1][2]) && (result[2][2] == result[1][2]) && (result[0][2] != null)){
             but3.setBackground(Color.BLUE);
             but6.setBackground(Color.BLUE);
             but9.setBackground(Color.BLUE);
-            butdisable();
+            butdisable(result[0][2]);
         }else if((result[0][0] == result[0][1]) && (result[0][2] == result[0][1]) && (result[0][0] != null)){
             but1.setBackground(Color.BLUE);
             but2.setBackground(Color.BLUE);
             but3.setBackground(Color.BLUE);
-            butdisable();
+            butdisable(result[0][0]);
         }else if((result[1][0] == result[1][1]) && (result[1][2] == result[1][1]) && (result[1][0] != null)){
             but4.setBackground(Color.BLUE);
             but5.setBackground(Color.BLUE);
             but6.setBackground(Color.BLUE);
-            butdisable();
+            butdisable(result[1][0]);
         }else if((result[2][0] == result[2][1]) && (result[2][2] == result[2][1]) && (result[2][0] != null)){
             but7.setBackground(Color.BLUE);
             but8.setBackground(Color.BLUE);
             but9.setBackground(Color.BLUE);
-            butdisable();
+            butdisable(result[2][0]);
         }else if((result[0][0] == result[1][1]) && (result[2][2] == result[1][1]) && (result[2][2] != null)){
             but1.setBackground(Color.BLUE);
             but5.setBackground(Color.BLUE);
             but9.setBackground(Color.BLUE);
-            butdisable();
+            butdisable(result[2][2]);
         }else if((result[0][2] == result[1][1]) && (result[2][0] == result[1][1]) && (result[1][1] != null)){
             but3.setBackground(Color.BLUE);
             but5.setBackground(Color.BLUE);
             but7.setBackground(Color.BLUE);
-            butdisable();
+            butdisable(result[1][1]);
         }
     }
     @Override
