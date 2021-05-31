@@ -168,34 +168,106 @@ public class GUinterface extends JFrame implements ActionListener{
             but1.setBackground(Color.BLUE);
             but4.setBackground(Color.BLUE);
             but7.setBackground(Color.BLUE);
+            but1.setEnabled(false);
+            but2.setEnabled(false);
+            but3.setEnabled(false);
+            but4.setEnabled(false);
+            but5.setEnabled(false);
+            but6.setEnabled(false);
+            but7.setEnabled(false);
+            but8.setEnabled(false);
+            but9.setEnabled(false);
         }else if((result[0][1] == result[1][1]) && (result[2][1] == result[1][1]) && (result[0][1] != null)){
             but2.setBackground(Color.BLUE);
             but5.setBackground(Color.BLUE);
             but8.setBackground(Color.BLUE);
+            but1.setEnabled(false);
+            but2.setEnabled(false);
+            but3.setEnabled(false);
+            but4.setEnabled(false);
+            but5.setEnabled(false);
+            but6.setEnabled(false);
+            but7.setEnabled(false);
+            but8.setEnabled(false);
+            but9.setEnabled(false);
         }else if((result[0][2] == result[1][2]) && (result[2][2] == result[1][2]) && (result[0][2] != null)){
             but3.setBackground(Color.BLUE);
             but6.setBackground(Color.BLUE);
             but9.setBackground(Color.BLUE);
+            but1.setEnabled(false);
+            but2.setEnabled(false);
+            but3.setEnabled(false);
+            but4.setEnabled(false);
+            but5.setEnabled(false);
+            but6.setEnabled(false);
+            but7.setEnabled(false);
+            but8.setEnabled(false);
+            but9.setEnabled(false);
         }else if((result[0][0] == result[0][1]) && (result[0][2] == result[0][1]) && (result[0][0] != null)){
             but1.setBackground(Color.BLUE);
             but2.setBackground(Color.BLUE);
             but3.setBackground(Color.BLUE);
+            but1.setEnabled(false);
+            but2.setEnabled(false);
+            but3.setEnabled(false);
+            but4.setEnabled(false);
+            but5.setEnabled(false);
+            but6.setEnabled(false);
+            but7.setEnabled(false);
+            but8.setEnabled(false);
+            but9.setEnabled(false);
         }else if((result[1][0] == result[1][1]) && (result[1][2] == result[1][1]) && (result[1][0] != null)){
             but4.setBackground(Color.BLUE);
             but5.setBackground(Color.BLUE);
             but6.setBackground(Color.BLUE);
+            but1.setEnabled(false);
+            but2.setEnabled(false);
+            but3.setEnabled(false);
+            but4.setEnabled(false);
+            but5.setEnabled(false);
+            but6.setEnabled(false);
+            but7.setEnabled(false);
+            but8.setEnabled(false);
+            but9.setEnabled(false);
         }else if((result[2][0] == result[2][1]) && (result[2][2] == result[2][1]) && (result[2][0] != null)){
             but7.setBackground(Color.BLUE);
             but8.setBackground(Color.BLUE);
             but9.setBackground(Color.BLUE);
+            but1.setEnabled(false);
+            but2.setEnabled(false);
+            but3.setEnabled(false);
+            but4.setEnabled(false);
+            but5.setEnabled(false);
+            but6.setEnabled(false);
+            but7.setEnabled(false);
+            but8.setEnabled(false);
+            but9.setEnabled(false);
         }else if((result[0][0] == result[1][1]) && (result[2][2] == result[1][1]) && (result[2][2] != null)){
             but1.setBackground(Color.BLUE);
             but5.setBackground(Color.BLUE);
             but9.setBackground(Color.BLUE);
+            but1.setEnabled(false);
+            but2.setEnabled(false);
+            but3.setEnabled(false);
+            but4.setEnabled(false);
+            but5.setEnabled(false);
+            but6.setEnabled(false);
+            but7.setEnabled(false);
+            but8.setEnabled(false);
+            but9.setEnabled(false);
         }else if((result[0][2] == result[1][1]) && (result[2][0] == result[1][1]) && (result[1][1] != null)){
             but3.setBackground(Color.BLUE);
             but5.setBackground(Color.BLUE);
             but7.setBackground(Color.BLUE);
+            but1.setEnabled(false);
+            but2.setEnabled(false);
+            but3.setEnabled(false);
+            but4.setEnabled(false);
+            but5.setEnabled(false);
+            but6.setEnabled(false);
+            but7.setEnabled(false);
+            but8.setEnabled(false);
+            but9.setEnabled(false);
         }
     }
     @Override
