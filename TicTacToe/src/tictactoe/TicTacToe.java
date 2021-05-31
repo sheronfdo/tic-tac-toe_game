@@ -17,7 +17,8 @@ public class TicTacToe{
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-       new GUinterface("jamith","anjana");
+        new get_player();
+        //new GUinterface("jamith","anjana");
         
     }
     
