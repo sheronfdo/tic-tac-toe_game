@@ -9,7 +9,9 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JCheckBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -30,8 +32,20 @@ public class get_player extends JFrame implements ActionListener{
     JTextField leftplayer = new JTextField();
     JTextField rightplayer = new JTextField();
     Font font = new Font("Calibri", Font.BOLD, 15);
+    static JCheckBox box = new JCheckBox();
+    ImageIcon boxselected = new ImageIcon("image/check2.png");
+    ImageIcon boxnotselected = new ImageIcon("image/cross2.png");
     
     public void gui(){
+        box.setText("Single play mode");
+        box.addActionListener(this);
+        //box.setPreferredSize(new Dimension(50, 50));
+        box.setBounds(125, 198, 150, 25);
+        box.setFocusable(false);
+        box.setFont(new Font("Calibri", Font.PLAIN, 15));
+        //box.setIcon(boxnotselected);
+        //box.setSelectedIcon(boxselected);
+        
         leftlabel.setBounds(10, 100, 110, 40);
         leftlabel.setText("Left Player Name");
         leftlabel.setFont(font);
@@ -50,9 +64,10 @@ public class get_player extends JFrame implements ActionListener{
         rightplayer.setBounds(130, 150, 150, 40);
         rightplayer.setFont(font);
         
-        button.setBounds(10, 200, 265, 40);
+        button.setBounds(10, 230, 265, 40);
         button.addActionListener(this);
         
+        this.add(box);
         this.add(button);
         this.add(leftlabel);
         this.add(rightlabel);
@@ -67,6 +82,9 @@ public class get_player extends JFrame implements ActionListener{
 
     @Override
     public void actionPerformed(ActionEvent e) {
+        if(box.isSelected()){
+            rightplayer.setText("PC");
+        }
         if(e.getSource() == button){
             if((leftplayer.getText().toString().length() == 0) || (rightplayer.getText().toString().length() == 0)){
                 if(leftplayer.getText().toString().length() == 0){
@@ -78,8 +96,9 @@ public class get_player extends JFrame implements ActionListener{
                     //rightplayer.setFocusable(true);
                 }
             } else {
+                
                 this.setVisible(false);
-                new GUinterface(leftplayer.getText(),rightplayer.getText());
+                new GUinterface(leftplayer.getText(),rightplayer.getText(), box.isSelected());
             }
         }
     }
