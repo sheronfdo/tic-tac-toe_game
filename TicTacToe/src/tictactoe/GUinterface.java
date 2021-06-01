@@ -6,6 +6,7 @@
 package tictactoe;
 
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -22,8 +23,11 @@ import javax.swing.JOptionPane;
  * @author Jamit
  */
 public class GUinterface extends JFrame implements ActionListener{
-    public GUinterface(String leftname,String rightname){
+    boolean singleplayer;
+    public GUinterface(String leftname,String rightname, boolean singleplay){
         gui(leftname,rightname);
+        singleplayer = singleplay;
+        
     }
     
     
@@ -181,7 +185,9 @@ public class GUinterface extends JFrame implements ActionListener{
         if(winner == "right"){
             JOptionPane.showMessageDialog(null, "winner is " + rightgamer.getText(), "Winner", JOptionPane.PLAIN_MESSAGE);
         }
+        won = true;
     }
+    boolean won = false;
     public void check_win(){
         if((result[0][0] == result[1][0]) && (result[2][0] == result[1][0]) && (result[0][0] != null)){
             but1.setBackground(Color.BLUE);
@@ -225,6 +231,58 @@ public class GUinterface extends JFrame implements ActionListener{
             butdisable(result[1][1]);
         }
     }
+    
+    
+    
+    //winning patterns
+    boolean pat1;
+    boolean pat2;
+    boolean pat3;
+    boolean pat4;
+    boolean pat5;
+    boolean pat6;
+    boolean pat7;
+    boolean pat8;
+    
+    public void check_risk(){
+        pat1 = (result[0][0] == "left" || result[1][0] == "left" || result[2][0] == "left") && (result[0][0] != "right" && result[1][0] != "right" && result[2][0] != "right");
+        pat2 = (result[0][1] == "left" || result[1][1] == "left" || result[2][1] == "left") && (result[0][1] != "right" && result[1][1] != "right" && result[2][1] != "right");
+        pat3 = (result[0][2] == "left" || result[1][2] == "left" || result[2][2] == "left") && (result[0][2] != "right" && result[1][2] != "right" && result[2][2] != "right");
+        pat4 = (result[0][0] == "left" || result[0][1] == "left" || result[0][2] == "left") && (result[0][0] != "right" && result[0][1] != "right" && result[0][2] != "right");
+        pat5 = (result[1][0] == "left" || result[1][1] == "left" || result[1][2] == "left") && (result[1][0] != "right" && result[1][1] != "right" && result[1][2] != "right");
+        pat6 = (result[2][0] == "left" || result[2][1] == "left" || result[2][2] == "left") && (result[2][0] != "right" && result[2][1] != "right" && result[2][2] != "right");
+        pat7 = (result[0][0] == "left" || result[1][1] == "left" || result[2][2] == "left") && (result[0][0] != "right" && result[1][1] != "right" && result[2][2] != "right");
+        pat8 = (result[0][2] == "left" || result[1][1] == "left" || result[2][0] == "left") && (result[0][2] != "right" && result[1][1] != "right" && result[2][0] != "right");
+        
+        if(!won && singleplayer){
+            if(pat1){
+                System.out.println("pat1");
+            }
+            if(pat2){
+                System.out.println("pat2");
+            }
+            if(pat3){
+                System.out.println("pat3");
+            }
+            if(pat4){
+                System.out.println("pat4");
+            }
+            if(pat5){
+                System.out.println("pat5");
+            }
+            if(pat6){
+                System.out.println("pat6");
+            }
+            if(pat7){
+                System.out.println("pat7");
+            }
+            if(pat8){
+                System.out.println("pat8");
+            }
+        }
+    }
+    
+    
     @Override
     public void actionPerformed(ActionEvent e) {
         player();
@@ -275,5 +333,8 @@ public class GUinterface extends JFrame implements ActionListener{
         }
         next_player();
         check_win();
+        if(cplayer == "right"){
+            check_risk();
+        }
     }
 }
