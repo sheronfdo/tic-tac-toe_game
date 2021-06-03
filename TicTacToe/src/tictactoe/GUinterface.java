@@ -10,6 +10,7 @@ import java.awt.Component;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import javax.swing.border.*;
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
@@ -244,7 +245,14 @@ public class GUinterface extends JFrame implements ActionListener{
     boolean pat7;
     boolean pat8;
     
+    //boolean[] risky_patterns_def = {false,false,false,false,false,false,false,false};
+    
     public void check_risk(){
+        
+        ArrayList<JButton> com_buttons = new ArrayList<JButton>();
+        
+        
+        System.out.println("");
         pat1 = (result[0][0] == "left" || result[1][0] == "left" || result[2][0] == "left") && (result[0][0] != "right" && result[1][0] != "right" && result[2][0] != "right");
         pat2 = (result[0][1] == "left" || result[1][1] == "left" || result[2][1] == "left") && (result[0][1] != "right" && result[1][1] != "right" && result[2][1] != "right");
         pat3 = (result[0][2] == "left" || result[1][2] == "left" || result[2][2] == "left") && (result[0][2] != "right" && result[1][2] != "right" && result[2][2] != "right");
@@ -254,32 +262,132 @@ public class GUinterface extends JFrame implements ActionListener{
         pat7 = (result[0][0] == "left" || result[1][1] == "left" || result[2][2] == "left") && (result[0][0] != "right" && result[1][1] != "right" && result[2][2] != "right");
         pat8 = (result[0][2] == "left" || result[1][1] == "left" || result[2][0] == "left") && (result[0][2] != "right" && result[1][1] != "right" && result[2][0] != "right");
         
+        boolean[] risky_patterns = {pat1,pat2,pat3,pat4,pat5,pat6,pat7,pat8};
         if(!won && singleplayer){
             if(pat1){
-                System.out.println("pat1");
+                if(result[0][0] != "left"){
+                    com_buttons.add(but1);
+                }
+                if(result[1][0] != "left"){
+                    com_buttons.add(but4);
+                }
+                if(result[2][0] != "left"){
+                    com_buttons.add(but7);
+                }
             }
             if(pat2){
-                System.out.println("pat2");
+                if(result[0][1] != "left"){
+                    com_buttons.add(but2);
+                }
+                if(result[1][1] != "left"){
+                    com_buttons.add(but5);
+                }
+                if(result[2][1] != "left"){
+                    com_buttons.add(but8);
+                }
             }
             if(pat3){
-                System.out.println("pat3");
+                if(result[0][2] != "left"){
+                    com_buttons.add(but3);
+                }
+                if(result[1][2] != "left"){
+                    com_buttons.add(but6);
+                }
+                if(result[2][2] != "left"){
+                    com_buttons.add(but9);
+                }
             }
             if(pat4){
-                System.out.println("pat4");
+                if(result[0][0] != "left"){
+                    com_buttons.add(but1);
+                }
+                if(result[0][1] != "left"){
+                    com_buttons.add(but2);
+                }
+                if(result[0][2] != "left"){
+                    com_buttons.add(but3);
+                }
             }
             if(pat5){
-                System.out.println("pat5");
+                if(result[1][0] != "left"){
+                    com_buttons.add(but4);
+                }
+                if(result[1][1] != "left"){
+                    com_buttons.add(but5);
+                }
+                if(result[1][2] != "left"){
+                    com_buttons.add(but6);
+                }
             }
             if(pat6){
-                System.out.println("pat6");
+                if(result[2][0] != "left"){
+                    com_buttons.add(but7);
+                }
+                if(result[2][1] != "left"){
+                    com_buttons.add(but8);
+                }
+                if(result[2][2] != "left"){
+                    com_buttons.add(but9);
+                }
             }
             if(pat7){
-                System.out.println("pat7");
+                if(result[0][0] != "left"){
+                    com_buttons.add(but1);
+                }
+                if(result[1][1] != "left"){
+                    com_buttons.add(but5);
+                }
+                if(result[2][2] != "left"){
+                    com_buttons.add(but9);
+                }
             }
             if(pat8){
-                System.out.println("pat8");
+                if(result[0][2] != "left"){
+                    com_buttons.add(but3);
+                }
+                if(result[1][1] != "left"){
+                    com_buttons.add(but5);
+                }
+                if(result[2][0] != "left"){
+                    com_buttons.add(but7);
+                }
             }
         }
+        System.out.println("current\n");
+        
+        for (int i = 0; i < com_buttons.toArray().length; i++) {
+            if(com_buttons.get(i) == but1){
+                System.out.println("but1");
+            }
+            if(com_buttons.get(i) == but2){
+                System.out.println("but2");
+            }
+            if(com_buttons.get(i) == but3){
+                System.out.println("but3");
+            }
+            if(com_buttons.get(i) == but4){
+                System.out.println("but4");
+            }
+            if(com_buttons.get(i) == but5){
+                System.out.println("but5");
+            }
+            if(com_buttons.get(i) == but6){
+                System.out.println("but6");
+            }
+            if(com_buttons.get(i) == but7){
+                System.out.println("but7");
+            }
+            if(com_buttons.get(i) == but8){
+                System.out.println("but8");
+            }
+            if(com_buttons.get(i) == but9){
+                System.out.println("but9");
+            }
+            
+            
+        }
+        System.out.println("");
+        
     }
     
     
