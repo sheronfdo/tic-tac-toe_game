@@ -11,6 +11,12 @@ import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Random;
+import java.util.Set;
+import java.util.TreeMap;
 import javax.swing.border.*;
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
@@ -249,7 +255,7 @@ public class GUinterface extends JFrame implements ActionListener {
 
     //boolean[] risky_patterns_def = {false,false,false,false,false,false,false,false};
     public void check_risk() {
-
+        
         ArrayList<JButton> com_buttons = new ArrayList<JButton>();
         ArrayList<JButton> most_com_buttons = new ArrayList<JButton>();
 
@@ -263,7 +269,7 @@ public class GUinterface extends JFrame implements ActionListener {
         pat7 = (result[0][0] == "left" || result[1][1] == "left" || result[2][2] == "left") && (result[0][0] != "right" && result[1][1] != "right" && result[2][2] != "right");
         pat8 = (result[0][2] == "left" || result[1][1] == "left" || result[2][0] == "left") && (result[0][2] != "right" && result[1][1] != "right" && result[2][0] != "right");
 
-        boolean[] risky_patterns = {pat1, pat2, pat3, pat4, pat5, pat6, pat7, pat8};
+        
         if (!won && singleplayer) {
             if (pat1) {
                 int i = 0;
@@ -497,12 +503,18 @@ public class GUinterface extends JFrame implements ActionListener {
                     }
                 }
             }
+            
+            if(most_com_buttons.size()>0){
+                get_suit_button(most_com_buttons);
+            }else{
+                get_suit_button(com_buttons);
+            }
         }
         
         //below lines only for get idea about above codings are they correct
-        System.out.println("\n");
+        /*System.out.println("\n");
         System.out.println("most com buttons");
-        for (int i = 0; i < most_com_buttons.toArray().length; i++) {
+        for (int i = 0; i < most_com_buttons.size(); i++) {
             if (most_com_buttons.get(i) == but1) {
                 System.out.println("but1");
             }
@@ -534,8 +546,8 @@ public class GUinterface extends JFrame implements ActionListener {
         }
         System.out.println("");
         System.out.println("current com buttons\n");
-
-        for (int i = 0; i < com_buttons.toArray().length; i++) {
+        
+        for (int i = 0; i < com_buttons.size(); i++) {
             if (com_buttons.get(i) == but1) {
                 System.out.println("but1");
             }
@@ -565,13 +577,125 @@ public class GUinterface extends JFrame implements ActionListener {
             }
 
         }
-        System.out.println("");
+        System.out.println("");*/
 
     }
-
+    
+    public void get_suit_button(ArrayList<JButton> buttons){
+        ArrayList<JButton> mc_buttons = buttons;
+        JButton button;
+        ArrayList<JButton> sui_buttons = new ArrayList<JButton>();
+        HashMap<JButton, Integer> prob = new HashMap<JButton, Integer>();
+        for(int i =0;i < mc_buttons.size();i++){
+            int count = 0;
+            JButton but = mc_buttons.get(i);
+            for (int j = 0; j < mc_buttons.size(); j++) {
+                if(but == mc_buttons.get(j)){
+                        count += 1;
+                }
+            }
+            prob.put(but, count);
+        }
+        Set set = prob.entrySet();
+        Iterator i = set.iterator();
+        int max = 0;
+        while(i.hasNext()){
+            Map.Entry val =(Map.Entry) i.next();
+            if((int) val.getValue()>max){
+                max = (int) val.getValue();
+            }
+        }
+        System.out.println(max);
+        Iterator p = set.iterator();
+        while(p.hasNext()){
+            Map.Entry val =(Map.Entry) p.next();
+            if((int) val.getValue()== max){
+                sui_buttons.add((JButton) val.getKey());
+            }
+        }
+        
+        System.out.println(sui_buttons.size()+"\n");
+        Random random = new Random();
+        int but=0;
+        try {
+            but = random.nextInt(sui_buttons.size());
+        } catch (IllegalArgumentException e) {
+        }
+        System.out.println(but);
+        /*for (int j = 0; j < 10; j++) {
+            System.out.println(random.nextInt(sui_buttons.size()));
+        }*/
+        button = sui_buttons.get(but);
+        player();
+        button.setIcon(cpicon);
+        button.setEnabled(false);
+        
+        if (button == but1) {
+            result[0][0] = cplayer;
+            System.out.println("but1");
+        }else if (button == but2) {
+            result[0][1] = cplayer;
+            System.out.println("but2");
+        }else if (button == but3) {
+            result[0][2] = cplayer;
+            System.out.println("but3");
+        }else if (button == but4) {
+            result[1][0] = cplayer;
+            System.out.println("but4");
+        }else if (button == but5) {
+            result[1][1] = cplayer;
+            System.out.println("but5");
+        }else if (button == but6) {
+            result[1][2] = cplayer;
+            System.out.println("but6");
+        }else if (button == but7) {
+            result[2][0] = cplayer;
+            System.out.println("but7");
+        }else if (button == but8) {
+            result[2][1] = cplayer;
+            System.out.println("but8");
+        }else if (button == but9) {
+            result[2][2] = cplayer;
+            System.out.println("but9");
+        }
+        check_win();
+        next_player();
+        //System.out.println(" ");    
+        /*for (int t = 0; t < sui_buttons.size(); t++) {
+            if (sui_buttons.get(t) == but1) {
+                System.out.println("but1");
+            }
+            if (sui_buttons.get(t) == but2) {
+                System.out.println("but2");
+            }
+            if (sui_buttons.get(t) == but3) {
+                System.out.println("but3");
+            }
+            if (sui_buttons.get(t) == but4) {
+                System.out.println("but4");
+            }
+            if (sui_buttons.get(t) == but5) {
+                System.out.println("but5");
+            }
+            if (sui_buttons.get(t) == but6) {
+                System.out.println("but6");
+            }
+            if (sui_buttons.get(t) == but7) {
+                System.out.println("but7");
+            }
+            if (sui_buttons.get(t) == but8) {
+                System.out.println("but8");
+            }
+            if (sui_buttons.get(t) == but9) {
+                System.out.println("but9");
+            }
+        }*/
+    }
+    
     @Override
     public void actionPerformed(ActionEvent e) {
         player();
+        
         if (e.getSource() == but1) {
             but1.setIcon(cpicon);
             but1.setEnabled(false);
