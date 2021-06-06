@@ -258,7 +258,7 @@ public class GUinterface extends JFrame implements ActionListener {
     boolean pat8;
 
     public void check_win_chance() {
-        
+
         JButton button = new JButton();
         pat1 = (result[0][0] == "right" || result[1][0] == "right" || result[2][0] == "right") && (result[0][0] != "left" && result[1][0] != "left" && result[2][0] != "left");
         pat2 = (result[0][1] == "right" || result[1][1] == "right" || result[2][1] == "right") && (result[0][1] != "left" && result[1][1] != "left" && result[2][1] != "left");
@@ -480,7 +480,7 @@ public class GUinterface extends JFrame implements ActionListener {
 
     //boolean[] risky_patterns_def = {false,false,false,false,false,false,false,false};
     public void check_risk() {
-        
+
         player();
         check_win_chance();
         ArrayList<JButton> com_buttons = new ArrayList<JButton>();
@@ -742,7 +742,7 @@ public class GUinterface extends JFrame implements ActionListener {
     public void get_suit_button(ArrayList<JButton> buttons) {
         System.out.println("get_sui_button running");
         ArrayList<JButton> mc_buttons = buttons;
-        JButton button;
+        JButton button = null;
         ArrayList<JButton> sui_buttons = new ArrayList<JButton>();
         HashMap<JButton, Integer> prob = new HashMap<JButton, Integer>();
         for (int i = 0; i < mc_buttons.size(); i++) {
@@ -784,71 +784,47 @@ public class GUinterface extends JFrame implements ActionListener {
         /*for (int j = 0; j < 10; j++) {
             System.out.println(random.nextInt(sui_buttons.size()));
         }*/
-        button = sui_buttons.get(but);
+        try {
+            button = sui_buttons.get(but);
+        } catch (IndexOutOfBoundsException e) {
+        }
 
-        button.setIcon(cpicon);
-        button.setEnabled(false);
+        try {
+            button.setIcon(cpicon);
+            button.setEnabled(false);
 
-        if (button == but1) {
-            result[0][0] = cplayer;
-            System.out.println("but1");
-        } else if (button == but2) {
-            result[0][1] = cplayer;
-            System.out.println("but2");
-        } else if (button == but3) {
-            result[0][2] = cplayer;
-            System.out.println("but3");
-        } else if (button == but4) {
-            result[1][0] = cplayer;
-            System.out.println("but4");
-        } else if (button == but5) {
-            result[1][1] = cplayer;
-            System.out.println("but5");
-        } else if (button == but6) {
-            result[1][2] = cplayer;
-            System.out.println("but6");
-        } else if (button == but7) {
-            result[2][0] = cplayer;
-            System.out.println("but7");
-        } else if (button == but8) {
-            result[2][1] = cplayer;
-            System.out.println("but8");
-        } else if (button == but9) {
-            result[2][2] = cplayer;
-            System.out.println("but9");
+            if (button == but1) {
+                result[0][0] = cplayer;
+                System.out.println("but1");
+            } else if (button == but2) {
+                result[0][1] = cplayer;
+                System.out.println("but2");
+            } else if (button == but3) {
+                result[0][2] = cplayer;
+                System.out.println("but3");
+            } else if (button == but4) {
+                result[1][0] = cplayer;
+                System.out.println("but4");
+            } else if (button == but5) {
+                result[1][1] = cplayer;
+                System.out.println("but5");
+            } else if (button == but6) {
+                result[1][2] = cplayer;
+                System.out.println("but6");
+            } else if (button == but7) {
+                result[2][0] = cplayer;
+                System.out.println("but7");
+            } else if (button == but8) {
+                result[2][1] = cplayer;
+                System.out.println("but8");
+            } else if (button == but9) {
+                result[2][2] = cplayer;
+                System.out.println("but9");
+            }
+        } catch (NullPointerException e) {
         }
         check_win();
         next_player();
-        //System.out.println(" ");    
-        /*for (int t = 0; t < sui_buttons.size(); t++) {
-            if (sui_buttons.get(t) == but1) {
-                System.out.println("but1");
-            }
-            if (sui_buttons.get(t) == but2) {
-                System.out.println("but2");
-            }
-            if (sui_buttons.get(t) == but3) {
-                System.out.println("but3");
-            }
-            if (sui_buttons.get(t) == but4) {
-                System.out.println("but4");
-            }
-            if (sui_buttons.get(t) == but5) {
-                System.out.println("but5");
-            }
-            if (sui_buttons.get(t) == but6) {
-                System.out.println("but6");
-            }
-            if (sui_buttons.get(t) == but7) {
-                System.out.println("but7");
-            }
-            if (sui_buttons.get(t) == but8) {
-                System.out.println("but8");
-            }
-            if (sui_buttons.get(t) == but9) {
-                System.out.println("but9");
-            }
-        }*/
     }
 
     @Override
