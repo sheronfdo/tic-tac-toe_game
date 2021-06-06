@@ -781,14 +781,10 @@ public class GUinterface extends JFrame implements ActionListener {
         } catch (IllegalArgumentException e) {
         }
         System.out.println(but);
-        /*for (int j = 0; j < 10; j++) {
-            System.out.println(random.nextInt(sui_buttons.size()));
-        }*/
         try {
             button = sui_buttons.get(but);
         } catch (IndexOutOfBoundsException e) {
         }
-
         try {
             button.setIcon(cpicon);
             button.setEnabled(false);
