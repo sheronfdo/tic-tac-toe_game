@@ -495,7 +495,6 @@ public class GUinterface extends JFrame implements ActionListener {
         pat6 = (result[2][0] == "left" || result[2][1] == "left" || result[2][2] == "left") && (result[2][0] != "right" && result[2][1] != "right" && result[2][2] != "right");
         pat7 = (result[0][0] == "left" || result[1][1] == "left" || result[2][2] == "left") && (result[0][0] != "right" && result[1][1] != "right" && result[2][2] != "right");
         pat8 = (result[0][2] == "left" || result[1][1] == "left" || result[2][0] == "left") && (result[0][2] != "right" && result[1][1] != "right" && result[2][0] != "right");
-
         if (!won && singleplayer) {
             System.out.println("check_risk running");
             if (pat1) {
