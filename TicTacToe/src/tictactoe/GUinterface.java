@@ -158,6 +158,7 @@ public class GUinterface extends JFrame implements ActionListener {
     }
 
     public void player() {
+        System.out.println("player running");
         if (cplayer == "left") {
             cpicon = lefticon;
         }
@@ -167,6 +168,7 @@ public class GUinterface extends JFrame implements ActionListener {
     }
 
     public void next_player() {
+        System.out.println("next_player running");
         if (cplayer == "left") {
             cplayer = "right";
             leftgamer.setBorder(border);
@@ -179,6 +181,7 @@ public class GUinterface extends JFrame implements ActionListener {
     }
 
     public void butdisable(String winner) {
+        System.out.println("but_disable running");
         but1.setEnabled(false);
         but2.setEnabled(false);
         but3.setEnabled(false);
@@ -200,6 +203,7 @@ public class GUinterface extends JFrame implements ActionListener {
     boolean won = false;
 
     public void check_win() {
+        System.out.println("check_win running");
         if ((result[0][0] == result[1][0]) && (result[2][0] == result[1][0]) && (result[0][0] != null)) {
             but1.setBackground(Color.BLUE);
             but4.setBackground(Color.BLUE);
@@ -253,9 +257,232 @@ public class GUinterface extends JFrame implements ActionListener {
     boolean pat7;
     boolean pat8;
 
+    public void check_win_chance() {
+        
+        JButton button = new JButton();
+        pat1 = (result[0][0] == "right" || result[1][0] == "right" || result[2][0] == "right") && (result[0][0] != "left" && result[1][0] != "left" && result[2][0] != "left");
+        pat2 = (result[0][1] == "right" || result[1][1] == "right" || result[2][1] == "right") && (result[0][1] != "left" && result[1][1] != "left" && result[2][1] != "left");
+        pat3 = (result[0][2] == "right" || result[1][2] == "right" || result[2][2] == "right") && (result[0][2] != "left" && result[1][2] != "left" && result[2][2] != "left");
+        pat4 = (result[0][0] == "right" || result[0][1] == "right" || result[0][2] == "right") && (result[0][0] != "left" && result[0][1] != "left" && result[0][2] != "left");
+        pat5 = (result[1][0] == "right" || result[1][1] == "right" || result[1][2] == "right") && (result[1][0] != "left" && result[1][1] != "left" && result[1][2] != "left");
+        pat6 = (result[2][0] == "right" || result[2][1] == "right" || result[2][2] == "right") && (result[2][0] != "left" && result[2][1] != "left" && result[2][2] != "left");
+        pat7 = (result[0][0] == "right" || result[1][1] == "right" || result[2][2] == "right") && (result[0][0] != "left" && result[1][1] != "left" && result[2][2] != "left");
+        pat8 = (result[0][2] == "right" || result[1][1] == "right" || result[2][0] == "right") && (result[0][2] != "left" && result[1][1] != "left" && result[2][0] != "left");
+
+        if (!won && singleplayer) {
+            System.out.println("check_win_chance running");
+            if (pat1) {
+                int i = 0;
+                if (result[0][0] == "right") {
+                    i = i + 1;
+                }
+                if (result[1][0] == "right") {
+                    i = i + 1;
+                }
+                if (result[2][0] == "right") {
+                    i = i + 1;
+                }
+                if (i > 1) {
+                    if (result[0][0] != "right") {
+                        button = but1;
+                        result[0][0] = "right";
+                    }
+                    if (result[1][0] != "right") {
+                        button = but4;
+                        result[1][0] = "right";
+                    }
+                    if (result[2][0] != "right") {
+                        button = but7;
+                        result[2][0] = "right";
+                    }
+                }
+            } else if (pat2) {
+                int i = 0;
+                if (result[0][1] == "right") {
+                    i = i + 1;
+                }
+                if (result[1][1] == "right") {
+                    i = i + 1;
+                }
+                if (result[2][1] == "right") {
+                    i = i + 1;
+                }
+                if (i > 1) {
+                    if (result[0][1] != "right") {
+                        button = but2;
+                        result[0][1] = "right";
+                    }
+                    if (result[1][1] != "right") {
+                        button = but5;
+                        result[1][1] = "right";
+                    }
+                    if (result[2][1] != "right") {
+                        button = but8;
+                        result[2][1] = "right";
+                    }
+                }
+            } else if (pat3) {
+                int i = 0;
+                if (result[0][2] == "right") {
+                    i = i + 1;
+                }
+                if (result[1][2] == "right") {
+                    i = i + 1;
+                }
+                if (result[2][2] == "right") {
+                    i = i + 1;
+                }
+                if (i > 1) {
+                    if (result[0][2] != "right") {
+                        button = but3;
+                        result[0][2] = "right";
+                    }
+                    if (result[1][2] != "right") {
+                        button = but6;
+                        result[1][2] = "right";
+                    }
+                    if (result[2][2] != "right") {
+                        button = but9;
+                        result[2][2] = "right";
+                    }
+                }
+            } else if (pat4) {
+                int i = 0;
+                if (result[0][0] == "right") {
+                    i = i + 1;
+                }
+                if (result[0][1] == "right") {
+                    i = i + 1;
+                }
+                if (result[0][2] == "right") {
+                    i = i + 1;
+                }
+                if (i > 1) {
+                    if (result[0][0] != "right") {
+                        result[0][0] = "right";
+                        button = but1;
+                    }
+                    if (result[0][1] != "right") {
+                        result[0][1] = "right";
+                        button = but2;
+                    }
+                    if (result[0][2] != "right") {
+                        result[0][2] = "right";
+                        button = but3;
+                    }
+                }
+            } else if (pat5) {
+                int i = 0;
+                if (result[1][0] == "right") {
+                    i = i + 1;
+                }
+                if (result[1][1] == "right") {
+                    i = i + 1;
+                }
+                if (result[1][2] == "right") {
+                    i = i + 1;
+                }
+                if (i > 1) {
+                    if (result[1][0] != "right") {
+                        button = but4;
+                        result[1][0] = "right";
+                    }
+                    if (result[1][1] != "right") {
+                        button = but5;
+                        result[1][1] = "right";
+                    }
+                    if (result[1][2] != "right") {
+                        button = but6;
+                        result[1][2] = "right";
+                    }
+                }
+            } else if (pat6) {
+                int i = 0;
+                if (result[2][0] == "right") {
+                    i = i + 1;
+                }
+                if (result[2][1] == "right") {
+                    i = i + 1;
+                }
+                if (result[2][2] == "right") {
+                    i = i + 1;
+                }
+                if (i > 1) {
+                    if (result[2][0] != "right") {
+                        result[2][0] = "right";
+                        button = but7;
+                    }
+                    if (result[2][1] != "right") {
+                        result[2][1] = "right";
+                        button = but8;
+                    }
+                    if (result[2][2] != "right") {
+                        result[2][2] = "right";
+                        button = but9;
+                    }
+                }
+            } else if (pat7) {
+                int i = 0;
+                if (result[0][0] == "right") {
+                    i = i + 1;
+                }
+                if (result[1][1] == "right") {
+                    i = i + 1;
+                }
+                if (result[2][2] == "right") {
+                    i = i + 1;
+                }
+                if (i > 1) {
+                    if (result[0][0] != "right") {
+                        result[0][0] = "right";
+                        button = but1;
+                    }
+                    if (result[1][1] != "right") {
+                        result[1][1] = "right";
+                        button = but5;
+                    }
+                    if (result[2][2] != "right") {
+                        result[2][2] = "right";
+                        button = but9;
+                    }
+                }
+            } else if (pat8) {
+                int i = 0;
+                if (result[0][2] == "right") {
+                    i = i + 1;
+                }
+                if (result[1][1] == "right") {
+                    i = i + 1;
+                }
+                if (result[2][0] == "right") {
+                    i = i + 1;
+                }
+                if (i > 1) {
+                    if (result[0][2] != "right") {
+                        result[0][2] = "right";
+                        button = but3;
+                    }
+                    if (result[1][1] != "right") {
+                        result[1][1] = "right";
+                        button = but5;
+                    }
+                    if (result[2][0] != "right") {
+                        result[2][0] = "right";
+                        button = but7;
+                    }
+                }
+            }
+            button.setIcon(cpicon);
+            button.setEnabled(false);
+            check_win();
+        }
+    }
+
     //boolean[] risky_patterns_def = {false,false,false,false,false,false,false,false};
     public void check_risk() {
         
+        player();
+        check_win_chance();
         ArrayList<JButton> com_buttons = new ArrayList<JButton>();
         ArrayList<JButton> most_com_buttons = new ArrayList<JButton>();
 
@@ -269,8 +496,8 @@ public class GUinterface extends JFrame implements ActionListener {
         pat7 = (result[0][0] == "left" || result[1][1] == "left" || result[2][2] == "left") && (result[0][0] != "right" && result[1][1] != "right" && result[2][2] != "right");
         pat8 = (result[0][2] == "left" || result[1][1] == "left" || result[2][0] == "left") && (result[0][2] != "right" && result[1][1] != "right" && result[2][0] != "right");
 
-        
         if (!won && singleplayer) {
+            System.out.println("check_risk running");
             if (pat1) {
                 int i = 0;
                 if (result[0][0] != "left") {
@@ -503,95 +730,27 @@ public class GUinterface extends JFrame implements ActionListener {
                     }
                 }
             }
-            
-            if(most_com_buttons.size()>0){
+
+            if (most_com_buttons.size() > 0) {
                 get_suit_button(most_com_buttons);
-            }else{
+            } else {
                 get_suit_button(com_buttons);
             }
         }
-        
-        //below lines only for get idea about above codings are they correct
-        /*System.out.println("\n");
-        System.out.println("most com buttons");
-        for (int i = 0; i < most_com_buttons.size(); i++) {
-            if (most_com_buttons.get(i) == but1) {
-                System.out.println("but1");
-            }
-            if (most_com_buttons.get(i) == but2) {
-                System.out.println("but2");
-            }
-            if (most_com_buttons.get(i) == but3) {
-                System.out.println("but3");
-            }
-            if (most_com_buttons.get(i) == but4) {
-                System.out.println("but4");
-            }
-            if (most_com_buttons.get(i) == but5) {
-                System.out.println("but5");
-            }
-            if (most_com_buttons.get(i) == but6) {
-                System.out.println("but6");
-            }
-            if (most_com_buttons.get(i) == but7) {
-                System.out.println("but7");
-            }
-            if (most_com_buttons.get(i) == but8) {
-                System.out.println("but8");
-            }
-            if (most_com_buttons.get(i) == but9) {
-                System.out.println("but9");
-            }
-
-        }
-        System.out.println("");
-        System.out.println("current com buttons\n");
-        
-        for (int i = 0; i < com_buttons.size(); i++) {
-            if (com_buttons.get(i) == but1) {
-                System.out.println("but1");
-            }
-            if (com_buttons.get(i) == but2) {
-                System.out.println("but2");
-            }
-            if (com_buttons.get(i) == but3) {
-                System.out.println("but3");
-            }
-            if (com_buttons.get(i) == but4) {
-                System.out.println("but4");
-            }
-            if (com_buttons.get(i) == but5) {
-                System.out.println("but5");
-            }
-            if (com_buttons.get(i) == but6) {
-                System.out.println("but6");
-            }
-            if (com_buttons.get(i) == but7) {
-                System.out.println("but7");
-            }
-            if (com_buttons.get(i) == but8) {
-                System.out.println("but8");
-            }
-            if (com_buttons.get(i) == but9) {
-                System.out.println("but9");
-            }
-
-        }
-        System.out.println("");*/
-
     }
-    
-    public void get_suit_button(ArrayList<JButton> buttons){
+
+    public void get_suit_button(ArrayList<JButton> buttons) {
+        System.out.println("get_sui_button running");
         ArrayList<JButton> mc_buttons = buttons;
         JButton button;
         ArrayList<JButton> sui_buttons = new ArrayList<JButton>();
         HashMap<JButton, Integer> prob = new HashMap<JButton, Integer>();
-        for(int i =0;i < mc_buttons.size();i++){
+        for (int i = 0; i < mc_buttons.size(); i++) {
             int count = 0;
             JButton but = mc_buttons.get(i);
             for (int j = 0; j < mc_buttons.size(); j++) {
-                if(but == mc_buttons.get(j)){
-                        count += 1;
+                if (but == mc_buttons.get(j)) {
+                    count += 1;
                 }
             }
             prob.put(but, count);
@@ -599,24 +758,24 @@ public class GUinterface extends JFrame implements ActionListener {
         Set set = prob.entrySet();
         Iterator i = set.iterator();
         int max = 0;
-        while(i.hasNext()){
-            Map.Entry val =(Map.Entry) i.next();
-            if((int) val.getValue()>max){
+        while (i.hasNext()) {
+            Map.Entry val = (Map.Entry) i.next();
+            if ((int) val.getValue() > max) {
                 max = (int) val.getValue();
             }
         }
         System.out.println(max);
         Iterator p = set.iterator();
-        while(p.hasNext()){
-            Map.Entry val =(Map.Entry) p.next();
-            if((int) val.getValue()== max){
+        while (p.hasNext()) {
+            Map.Entry val = (Map.Entry) p.next();
+            if ((int) val.getValue() == max) {
                 sui_buttons.add((JButton) val.getKey());
             }
         }
-        
-        System.out.println(sui_buttons.size()+"\n");
+
+        System.out.println(sui_buttons.size() + "\n");
         Random random = new Random();
-        int but=0;
+        int but = 0;
         try {
             but = random.nextInt(sui_buttons.size());
         } catch (IllegalArgumentException e) {
@@ -626,35 +785,35 @@ public class GUinterface extends JFrame implements ActionListener {
             System.out.println(random.nextInt(sui_buttons.size()));
         }*/
         button = sui_buttons.get(but);
-        player();
+
         button.setIcon(cpicon);
         button.setEnabled(false);
-        
+
         if (button == but1) {
             result[0][0] = cplayer;
             System.out.println("but1");
-        }else if (button == but2) {
+        } else if (button == but2) {
             result[0][1] = cplayer;
             System.out.println("but2");
-        }else if (button == but3) {
+        } else if (button == but3) {
             result[0][2] = cplayer;
             System.out.println("but3");
-        }else if (button == but4) {
+        } else if (button == but4) {
             result[1][0] = cplayer;
             System.out.println("but4");
-        }else if (button == but5) {
+        } else if (button == but5) {
             result[1][1] = cplayer;
             System.out.println("but5");
-        }else if (button == but6) {
+        } else if (button == but6) {
             result[1][2] = cplayer;
             System.out.println("but6");
-        }else if (button == but7) {
+        } else if (button == but7) {
             result[2][0] = cplayer;
             System.out.println("but7");
-        }else if (button == but8) {
+        } else if (button == but8) {
             result[2][1] = cplayer;
             System.out.println("but8");
-        }else if (button == but9) {
+        } else if (button == but9) {
             result[2][2] = cplayer;
             System.out.println("but9");
         }
@@ -691,11 +850,11 @@ public class GUinterface extends JFrame implements ActionListener {
             }
         }*/
     }
-    
+
     @Override
     public void actionPerformed(ActionEvent e) {
         player();
-        
+
         if (e.getSource() == but1) {
             but1.setIcon(cpicon);
             but1.setEnabled(false);
